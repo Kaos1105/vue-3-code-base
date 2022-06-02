@@ -1,0 +1,15 @@
+export default {
+  dashboard: 'ホーム',
+  attendance: '出勤管理',
+  work_data: '勤務データ',
+  setting: '設定',
+  category: '登録大分類',
+  approval: '申請・承認',
+  time_card: 'タイムカード',
+  monthly_report: '月間集計表',
+  yearly_report: '年間集計表',
+  staff_registration: '従業員登録',
+  staff_list: '従業員一覧',
+  basic_setting: '基本設定',
+  branch_management: '支店管理',
+};

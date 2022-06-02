@@ -1,0 +1,17 @@
+export default {
+  dashboard: 'Home',
+  attendance: 'Attendance',
+  category: 'Category',
+  create: 'Create',
+  edit: 'Edit',
+  user_profile: 'User profile',
+  setting_profile: 'Setting',
+  approval: 'Approval',
+  time_card: 'Time card',
+  monthly_report: 'Monthly report',
+  yearly_report: 'Yearly report',
+  staff_registration: 'Staff registration',
+  staff_list: 'Staff list',
+  basic_setting: 'Basic configuration',
+  branch_management: 'Branch',
+};
