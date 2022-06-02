@@ -1,40 +1,17 @@
 <template>
   <section class="dashboard">
-    <div class="dashboard__main text-center">
-      <ul class="t-image-b">
-        <li @click="$router.push({ name: 'work-data', query: { mode: 'daily' } })">
-          <span class="u-mb-4">{{ $t('dashboard.daily_data') }}</span>
-          <img :src="dailyLogo" :alt="$t('dashboard.daily_data')" />
-        </li>
-        <li @click="$router.push({ name: 'work-data', query: { mode: 'monthly' } })">
-          <span class="u-mb-4">{{ $t('dashboard.monthly_data') }}</span>
-          <img :src="monthlyLogo" :alt="$t('dashboard.monthly_data')" />
-        </li>
-        <li @click="$router.push({ name: 'staff-list' })">
-          <span class="u-mb-4">{{ $t('dashboard.search_staff_list') }}</span>
-          <img :src="staffListLogo" :alt="$t('dashboard.search_staff_list')" />
-        </li>
-      </ul>
-    </div>
+    <div class="dashboard__main text-center"> Dash board </div>
   </section>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import dailyLogo from '@/assets/images/calendar-daily.png';
-  import monthlyLogo from '@/assets/images/october.png';
-  import staffListLogo from '@/assets/images/job.png';
-
   export default defineComponent({
     name: 'Index',
 
     setup() {
-      return {
-        dailyLogo,
-        monthlyLogo,
-        staffListLogo,
-      };
+      return {};
     },
   });
 </script>

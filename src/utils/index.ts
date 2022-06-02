@@ -1,5 +1,4 @@
 import { forEach, isEmpty } from 'lodash-es';
-import type { App, Plugin } from 'vue';
 import CryptoJS from 'crypto-js';
 
 export interface Pagination {
@@ -24,17 +23,6 @@ const deleteEmptyValue = (object: any) => {
     }
   });
   return object;
-};
-
-const withInstall = <T>(component: T, alias?: string) => {
-  const comp = component as any;
-  comp.install = (app: App) => {
-    app.component(comp.name || comp.displayName, component);
-    if (alias) {
-      app.config.globalProperties[alias] = component;
-    }
-  };
-  return component as T & Plugin;
 };
 
 /**
@@ -72,11 +60,4 @@ const convertPagination = (pagination: Pagination, position = 'top') => {
   };
 };
 
-export {
-  deleteEmptyValue,
-  withInstall,
-  dataDecryption,
-  dataEncryption,
-  splitNameField,
-  convertPagination,
-};
+export { deleteEmptyValue, dataDecryption, dataEncryption, splitNameField, convertPagination };

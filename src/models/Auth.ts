@@ -1,28 +1,19 @@
 import Model from './Model.js';
+import axios from '@/plugins/axios';
 
 interface LoginData {
-  email: string;
+  login_id: string;
   password: string;
 }
 
 export default class Auth extends Model {
-  buildUrl(request: any) {
-    const { params } = request;
-    return ['auth', ...params];
-  }
+  static baseUrl = 'auth';
 
   static async login(data: LoginData) {
-    // @ts-ignore
-    return new this().request({ method: 'POST', url: 'auth/login', data });
-  }
-
-  static async profile(configs = {}) {
-    // @ts-ignore
-    return new this().request({ method: 'GET', url: 'auth/profile', ...configs });
+    return axios.post(`${this.baseUrl}/login`, data).then((result) => result.data);
   }
 
   static async logout() {
-    // @ts-ignore
-    return new this().request({ method: 'POST', url: 'auth/logout' });
+    return axios.post(`${this.baseUrl}/logout`).then((result) => result.data);
   }
 }

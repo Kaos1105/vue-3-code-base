@@ -1,7 +1,4 @@
-import { withInstall } from '@/utils';
+import AppHeader from './src/AppHeader.vue';
+import AppSidebar from './src/AppSidebar.vue';
 
-import appHeader from './src/AppHeader.vue';
-import appSidebar from './src/AppSidebar.vue';
-
-export const AppHeader = withInstall(appHeader);
-export const AppSidebar = withInstall(appSidebar);
+export { AppHeader, AppSidebar };

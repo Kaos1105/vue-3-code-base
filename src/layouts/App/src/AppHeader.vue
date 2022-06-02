@@ -21,8 +21,8 @@
   import { defineComponent } from 'vue';
 
   import Breadcrumb from '@/components/Breadcrumb/Breadcrumb.vue';
-  import { Profile } from '@/components/Profile';
-  import { DrawerLanguage } from '@/components/Shared';
+  import Profile from '@/components/Profile/Profile.vue';
+  import DrawerLanguage from '@/components/Shared/DrawerLanguage.vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
   import { useCommonStore } from '@/store/common';
 

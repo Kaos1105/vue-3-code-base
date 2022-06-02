@@ -85,7 +85,7 @@
     SidebarClose,
     SidebarDashboard,
     SidebarSetting,
-  } from '@/components/Icons';
+  } from '@/components/Icons/index';
 
   export default defineComponent({
     name: 'AppSidebar',
@@ -105,7 +105,7 @@
       const isCollapse = ref(false);
 
       // collapse active sub menu
-      const activeKey = ref<(string | number)[]>(['attendance', 'setting']);
+      const activeKey = ref<(string | number)[]>([]);
       const preActiveKeys = ref<(string | number)[]>([]);
       const isShowChildrenNav = ref<boolean>(true);
 

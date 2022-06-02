@@ -17,7 +17,7 @@
   import { defineComponent } from 'vue';
 
   import background from '@/assets/404.png';
-  import { DrawerLanguage } from '@/components/Shared';
+  import DrawerLanguage from '@/components/Shared/DrawerLanguage.vue';
 
   export default defineComponent({
     name: 'ErrorPage',

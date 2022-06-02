@@ -12,7 +12,7 @@
           <div class="form-group">
             <Field
               v-slot="{ value, handleChange, errorMessage }"
-              v-model="form.email"
+              v-model="form.login_id"
               :name="$t('login.email_label')"
               rules="required|email"
             >
@@ -89,21 +89,15 @@
 
 <script lang="ts">
   import { defineComponent, ref, onMounted } from 'vue';
-  import { useI18n } from 'vue-i18n';
   import { useForm } from 'vee-validate';
-  import { isEmpty } from 'lodash-es';
-  import { dataDecryption, dataEncryption } from '@/utils';
-  import { secretKeyEnum } from '@/enums/secretKeyEnum';
-  import { DrawerLanguage } from '@/components/Shared';
+  import DrawerLanguage from '@/components/Shared/DrawerLanguage.vue';
   import { useAuthStore } from '@/store/auth';
   import Auth from '@/models/Auth';
-  import logo from '@/assets/logo.png';
-  import { COOKIES_KEY } from '@/enums/cookieEnum';
+  import logo from '@/assets/images/logo.svg';
   import { useRouter } from 'vue-router';
-  import Cookies from 'js-cookie';
 
   interface Params {
-    email: string;
+    login_id: string;
     password: string;
   }
 
@@ -115,60 +109,31 @@
     },
 
     setup() {
-      const { t } = useI18n();
       const router = useRouter();
       const authStore = useAuthStore();
-      const { handleSubmit, setErrors } = useForm();
+      const { handleSubmit } = useForm();
 
-      const form = ref<Params>({ email: '', password: '' });
+      const form = ref<Params>({ login_id: '', password: '' });
       const loading = ref<boolean>(false);
       const remember = ref<boolean>(false);
 
-      onMounted(() => {
-        const dataDecrypted = dataDecryption(
-          Cookies.get(COOKIES_KEY.REMEMBER_ME),
-          secretKeyEnum.timeXRememberUser,
-        );
-
-        if (!isEmpty(dataDecrypted)) {
-          remember.value = true;
-          form.value = { ...dataDecrypted };
-        }
-      });
+      onMounted(() => {});
 
       const onSubmit = handleSubmit(async () => {
         loading.value = true;
         try {
           const { data } = await Auth.login(form.value);
-          const { token, profile } = data;
+          const { token, staff } = data;
 
           loading.value = false;
           authStore.setToken(token);
-          authStore.setProfile(profile.data);
-
-          if (remember.value) {
-            Cookies.set(
-              COOKIES_KEY.REMEMBER_ME,
-              dataEncryption(form.value, secretKeyEnum.timeXRememberUser),
-            );
-          } else {
-            Cookies.remove(COOKIES_KEY.REMEMBER_ME);
-          }
+          authStore.setStaff(staff);
 
           await router.push({ name: 'dashboard' });
         } catch (error: any) {
           loading.value = false;
 
-          const arr = ['login.email_label', 'login.password_label'];
-          const obj = {};
-
-          for (let i = 0; i < arr.length; i++) {
-            obj[`${t(arr[i])}`] = t('error.email_pw_incorrect');
-          }
-
-          setErrors(obj);
           authStore.setLogout();
-          Cookies.remove(COOKIES_KEY.REMEMBER_ME);
         }
       });
 

@@ -2,21 +2,20 @@ import { defineStore } from 'pinia';
 import { COOKIES_KEY } from '@/enums/cookieEnum';
 import Cookies from 'js-cookie';
 
-interface Profile {
+interface Staff {
   id?: string;
   email: string;
   name: string;
-  phone: string;
   created_at?: string;
   updated_at?: string;
 }
 
 interface AuthState {
-  profile: Profile;
+  staff: Staff;
   token: string | unknown;
 }
 
-const initProfile = {
+const initStaff = {
   id: '',
   email: '',
   name: '',
@@ -27,12 +26,12 @@ export const useAuthStore = defineStore({
   id: 'auth',
 
   state: (): AuthState => ({
-    profile: { ...initProfile },
+    staff: { ...initStaff },
     token: Cookies.get(COOKIES_KEY.TOKEN),
   }),
 
   getters: {
-    authProfile: (state) => state.profile,
+    authProfile: (state) => state.staff,
     hasToken: (state) => state.token,
   },
 
@@ -42,13 +41,13 @@ export const useAuthStore = defineStore({
       Cookies.set(COOKIES_KEY.TOKEN, token, { expires: 7 });
     },
 
-    setProfile(profile: Profile) {
-      this.profile = { ...profile };
+    setStaff(staff: Staff) {
+      this.staff = { ...staff };
     },
 
     setLogout() {
       this.token = '';
-      this.profile = { ...initProfile };
+      this.staff = { ...initStaff };
       Cookies.remove(COOKIES_KEY.TOKEN, { expires: 7 });
     },
   },

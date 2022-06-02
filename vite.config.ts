@@ -12,7 +12,7 @@ const __APP_INFO__ = {
 
 export default (): UserConfig => {
   return {
-    base: '/admin/',
+    base: '/',
     resolve: {
       alias: [
         {

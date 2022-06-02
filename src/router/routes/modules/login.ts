@@ -5,7 +5,7 @@ const login: AppRouteModule = {
   path: '/login',
   name: 'login',
   beforeEnter: ResolveGuard([LoginGuard]),
-  component: () => import('@/pages/auth/login/index.vue'),
+  component: () => import('@/pages/auth/index.vue'),
   meta: { title: 'routes.login', hasSearch: false },
 };
 

@@ -1,13 +1,7 @@
-import { withInstall } from '@/utils';
+import SidebarArrowDown from '@/components/Icons/SidebarArrowDown.vue';
+import SidebarClose from '@/components/Icons/SidebarClose.vue';
+import SidebarDashboard from '@/components/Icons/SidebarDashboard.vue';
+import SidebarAttendance from '@/components/Icons/SidebarAttendance.vue';
+import SidebarSetting from '@/components/Icons/SidebarSetting.vue';
 
-import sidebarArrowDown from './src/SidebarArrowDown.vue';
-import sidebarClose from './src/SidebarClose.vue';
-import sidebarDashboard from './src/SidebarDashboard.vue';
-import sidebarAttendance from './src/SidebarAttendance.vue';
-import sidebarSetting from './src/SidebarSetting.vue';
-
-export const SidebarArrowDown = withInstall(sidebarArrowDown);
-export const SidebarClose = withInstall(sidebarClose);
-export const SidebarDashboard = withInstall(sidebarDashboard);
-export const SidebarAttendance = withInstall(sidebarAttendance);
-export const SidebarSetting = withInstall(sidebarSetting);
+export { SidebarArrowDown, SidebarClose, SidebarDashboard, SidebarAttendance, SidebarSetting };
