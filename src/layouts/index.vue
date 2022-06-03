@@ -23,9 +23,6 @@
   import localeEn from 'ant-design-vue/es/locale/en_US';
   import localeJa from 'ant-design-vue/es/locale/ja_JP';
   import { useRoute } from 'vue-router';
-  import { useCommonStore } from '@/store/common';
-  import { filter } from 'lodash-es';
-  import { basicSettingTabEnum } from '@/enums/basicSettingTabEnum';
 
   export default defineComponent({
     name: 'IndexLayout',
@@ -35,7 +32,6 @@
     setup() {
       const { locale } = useI18n();
       const route = useRoute();
-      const commonStore = useCommonStore();
 
       const visible = ref(true);
       const locales = ref({ en: localeEn, ja: localeJa });
@@ -58,12 +54,7 @@
         isCollapse.value = isCollapseEmit;
       };
 
-      watch(route, (routing) => {
-        const innerQuery = filter(basicSettingTabEnum, { value: routing.query?.tab });
-        if (!innerQuery.length) {
-          commonStore.open = [];
-        }
-      });
+      watch(route, (_) => {});
 
       return {
         visible,

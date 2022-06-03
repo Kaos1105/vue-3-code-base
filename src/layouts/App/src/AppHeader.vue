@@ -5,9 +5,9 @@
         <breadcrumb />
       </div>
       <div class="header__content--right">
-        <a-button v-if="$route.meta?.hasSearch" class="btn__search" @click="openSearch">
-          <search-outlined />
-        </a-button>
+        <!--        <a-button v-if="$route.meta?.hasSearch" class="btn__search" @click="openSearch">-->
+        <!--          <search-outlined />-->
+        <!--        </a-button>-->
 
         <profile />
 

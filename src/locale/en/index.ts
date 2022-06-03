@@ -8,8 +8,6 @@ import routes from './routes';
 import modal from './modal';
 import user from './user';
 import error from './error';
-import setting from './setting';
-import attendance from './attendance';
 
 export default {
   common,
@@ -22,6 +20,4 @@ export default {
   modal,
   user,
   error,
-  setting,
-  attendance,
 };

@@ -11,6 +11,17 @@ export function useNavigation() {
         label: t('sidebar.dashboard'),
         icon: 'SidebarDashboard',
       },
+      {
+        name: 'master',
+        label: t('sidebar.master'),
+        icon: 'SidebarAttendance',
+        children: [
+          {
+            name: 'company_list',
+            label: t('sidebar.company_list'),
+          },
+        ],
+      },
     ];
   });
 

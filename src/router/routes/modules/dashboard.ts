@@ -13,7 +13,6 @@ const dashboard: AppRouteModule = {
       component: () => import('@/pages/dashboard/index.vue'),
       meta: {
         title: 'routes.dashboard',
-        hasSearch: false,
       },
     },
   ],

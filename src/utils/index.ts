@@ -1,14 +1,20 @@
 import { forEach, isEmpty } from 'lodash-es';
 import CryptoJS from 'crypto-js';
+import { SorterType } from '@/models/Model';
 
 export interface Pagination {
   total: number;
   count: number;
-  per_page: number;
-  current_page: number;
-  total_pages: number;
-  link?: any;
-  position?: string;
+  perPage: number;
+  currentPage: number;
+  totalPages: number;
+}
+
+export interface AntdTablePagination {
+  current: number;
+  total: number;
+  pageSize: number;
+  position: string;
 }
 
 const deleteEmptyValue = (object: any) => {
@@ -53,11 +59,28 @@ const splitNameField = (text: string, txtToDelete: string) => {
 
 const convertPagination = (pagination: Pagination, position = 'top') => {
   return {
-    current: pagination.current_page,
+    current: pagination.currentPage,
     total: pagination.total,
-    pageSize: pagination.per_page,
+    pageSize: pagination.perPage,
     position: position,
   };
 };
 
-export { deleteEmptyValue, dataDecryption, dataEncryption, splitNameField, convertPagination };
+const convertSorter = (sorter: SorterType) => {
+  let result = '';
+  if (sorter.order === 'ascend') {
+    result = sorter.columnKey;
+  } else if (sorter.order === 'descend') {
+    result = `-${sorter.columnKey}`;
+  }
+  return result;
+};
+
+export {
+  deleteEmptyValue,
+  dataDecryption,
+  dataEncryption,
+  splitNameField,
+  convertPagination,
+  convertSorter,
+};
